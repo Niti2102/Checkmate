@@ -1,0 +1,13 @@
+1.Basically .env files are developed inorder to store confidential values like the api keys,dbms passwds etc.
+2.api key allows the user to access the google cloud services and make sure it is valid only for authorised user
+3.load_dotenv() is for reading the dotenv file(i.e fetching the api key residing in .env file)
+4.os.getenv() is used to store variable api_key as the exact value of api key we have stored in .env file.
+5.genai.configure(api_key=api_key) :- since we are using genai model of google,hence api key is mandatory to pass the api request and hence i modify the api_key required for genai model to the api key we stored in .env file.
+6.Next we define a variable model,stating which model of the google genai to use and we here use gemini flash 1.5 model.
+7.we define a function to extract the text from the image from pre trained model by passing the image_path,output_folder where image_path->path of the image to fetch,output_folder->stores the extracted text in json format.
+8.input_prompt is defined with multistring input and hence use triple quotes and define what are the parameters to include in the model to fetch.
+9.we create a try catch block and define variable 'image' as Image.open()->opens the img available in the image_path.
+10.we create a response variable and store model.generate_content->to generate content based on input prompt and we pass the paramenter of input_prompt and image inside it.
+11. now response.text.strip()->after we get the raw data in json format is stored in response,.text->converts the raw json data to string,.strip("'''json")->it removes the trailing '''json text from the response and this data is stored in cheque_data.
+12.json_path=os.path.join()->combines all json files together and input parameter is output_folder where all the extracted json data is stored as chequeno.json
+13.opening the json_path and we overwrite the content with 2 indent spaces in json.dump() function and hence we get the extracted json file in multiplestring with 2 spaces and if any error occurs then error is displayed.

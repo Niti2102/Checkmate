@@ -1,0 +1,3 @@
+1.password.encode()->first converts the string passwd into bytes and since we use hashlib.sha256()->converts the byte formate to usique hashcode and finally using hexdigest()->converts raw binary hash to readable string.
+2.we create another function to check whether the passwd is matching or not using chec_passwd where we pass the hashed_passwd and user_passwd and if both the hashed values of the present and stored match then login is successful.
+3.output_images stores the parsed image from the parse.py file
